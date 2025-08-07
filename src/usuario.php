@@ -5,7 +5,7 @@ class Usuario implements ActiveRecord{
 
     private int $idUsuario;
     
-    public function __construct(private string $email,private string $senha){
+    public function __construct(private string $email,private string $senha, private string $nome){
     }
 
     public function setIdUsuario(int $idUsuario):void{
@@ -24,6 +24,10 @@ class Usuario implements ActiveRecord{
         $this->email = $email;
     }
 
+    public function setNome(string $nome):void{
+        $this->nome = $nome;
+    }
+
     public function getSenha():string{
         return $this->senha;
     }
@@ -32,13 +36,17 @@ class Usuario implements ActiveRecord{
         return $this->email;
     }
 
+    public function getNome():string{
+        return $this->nome;
+    }
+
     public function save():bool{
         $conexao = new MySQL();
         $this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
         if(isset($this->idUsuario)){
-            $sql = "UPDATE usuarios SET email = '{$this->email}' ,senha = '{$this->senha}' WHERE idUsuario = {$this->idUsuario}";
+            $sql = "UPDATE usuarios SET email = '{$this->email}' ,senha = '{$this->senha}', nome = '{$this->nome}' WHERE idUsuario = {$this->idUsuario}";
         }else{
-            $sql = "INSERT INTO usuarios (email,senha) VALUES ('{$this->email}','{$this->senha}')";
+            $sql = "INSERT INTO usuarios (email,senha,nome) VALUES ('{$this->email}','{$this->senha}', '{$this->nome}')";
         }
         return $conexao->executa($sql);
     }
@@ -47,7 +55,7 @@ class Usuario implements ActiveRecord{
         $conexao = new MySQL();
         $sql = "SELECT * FROM usuarios WHERE idUsuario = {$idUsuario}";
         $resultado = $conexao->consulta($sql);
-        $u = new Usuario($resultado[0]['email'],$resultado[0]['senha']);
+        $u = new Usuario($resultado[0]['email'],$resultado[0]['senha'],$resultado[0]['nome']);
         $u->setIdUsuario($resultado[0]['idUsuario']);
         return $u;
     }
@@ -64,7 +72,7 @@ class Usuario implements ActiveRecord{
         $resultados = $conexao->consulta($sql);
         $usuarios = array();
         foreach($resultados as $resultado){
-            $u = new Usuario($resultado['email'],$resultado['senha']);
+            $u = new Usuario($resultado['email'],$resultado['senha'],$resultado['nome']);
             $u->setIdUsuario($resultado['idUsuario']);
             $usuarios[] = $u;
         }

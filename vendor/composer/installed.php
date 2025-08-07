@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'luiz.pacheco/lista-de-contatos',
+        'name' => 'mathias.scherer/lista-de-contatos',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '239bc3f4c43f78cffe1e807e59c0a64278aa6743',
+        'reference' => '5111662e3d266a1d5d319f0d1d501ce7cd5259ac',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'luiz.pacheco/lista-de-contatos' => array(
+        'mathias.scherer/lista-de-contatos' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '239bc3f4c43f78cffe1e807e59c0a64278aa6743',
+            'reference' => '5111662e3d266a1d5d319f0d1d501ce7cd5259ac',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

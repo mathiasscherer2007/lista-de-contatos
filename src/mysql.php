@@ -25,4 +25,5 @@ class MySQL{
 		return $data;
 		}
 	}
+	
 ?>

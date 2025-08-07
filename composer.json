@@ -1,15 +1,9 @@
 {
-    "name": "luiz.pacheco/lista-de-contatos",
+    "name": "mathias.scherer/lista-de-contatos",
+    "require": {},
     "autoload": {
         "psr-4": {
-            "LuizPacheco\\ListaDeContatos\\": "src/"
+            "": "src/"
         }
-    },
-    "authors": [
-        {
-            "name": "LuizHenriqueMP",
-            "email": "98365070+LuizHenriqueMP@users.noreply.github.com"
-        }
-    ],
-    "require": {}
+    }
 }

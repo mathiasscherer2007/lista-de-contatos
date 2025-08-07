@@ -5,7 +5,9 @@ if(!isset($_SESSION['idUsuario'])){
 }
 require_once __DIR__."/vendor/autoload.php";
 
-$livros;
+$conexao = new MySQL();
+$sql = "SELECT * FROM livros";
+$livros = $conexao->consulta($sql);
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +22,15 @@ $livros;
 
 <table>
     <tr>
-        <td>Título</td>
+        <td><strong>Título</strong></td>
     </tr>
-    <tr>
     <?php
     foreach($livros as $livro){
-        echo "<td>{$livro->getNome()}</td>";
+        echo "<tr>";
+        echo "<td>{$livro[1]}</td>";
+        echo "</tr>";
     }
     ?>
-    </tr>
 </table>
-<a href='sair.php'>Sair</a>
 </body>
 </html>
