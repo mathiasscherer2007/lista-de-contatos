@@ -1,0 +1,15 @@
+{
+    "name": "luiz.pacheco/lista-de-contatos",
+    "autoload": {
+        "psr-4": {
+            "LuizPacheco\\ListaDeContatos\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "LuizHenriqueMP",
+            "email": "98365070+LuizHenriqueMP@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
