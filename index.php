@@ -21,7 +21,7 @@ if(isset($_POST['botao'])){
     <link rel="icon" href="faviicon.png">
 </head>
 <body>
-    <div class="container">
+    <div class="container-form">
         <form action='index.php' method='post' class='form-centrado'>
             <h1 class='titulo-form'><i>The Books on the Table</i></h1>
             <p class='titulo-form'>Login</p>

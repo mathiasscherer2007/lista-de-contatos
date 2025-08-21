@@ -19,7 +19,7 @@ if(isset($_POST['botao'])){
     <link rel="icon" href="faviicon.png">
 </head>
 <body>
-    <div class='container'>
+    <div class='container-form'>
         <form class='form-centrado' action='formCadUsuario.php' method='post'>
             <h1 class='titulo-form'><i>The Books on the Table</i></h1>
             <p class='titulo-form'>Criação de Conta</p>
