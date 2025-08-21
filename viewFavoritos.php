@@ -14,12 +14,21 @@ $livros_favoritos_lista = [];
 foreach($livros_favoritos as $livro_favorito){
     foreach($livros as $livro){
         if($livro_favorito[2] == $livro[0]){
-            $livros_favoritos_lista[] = $livro[1];
+            $livros_favoritos_lista[] = $livro[0];
         }
     }
 }
 $sql = "SELECT nome FROM usuarios WHERE idUsuario = ".$_SESSION['idUsuario'];
 $nome = $conexao->consulta($sql)[0][0];
+
+if(isset($_POST['botao'])){
+
+    $sql = "DELETE FROM favoritos WHERE favoritos.idUser = {$_SESSION['idUsuario']} AND favoritos.idLivro = {$_POST['botao']}";
+    $conexao->executa($sql);
+
+    header("location: viewFavoritos.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,11 +58,15 @@ $nome = $conexao->consulta($sql)[0][0];
             <td></td>
         </tr>
         <?php
-            foreach($livros_favoritos_lista as $livro_favorito){
-                echo "<tr>";
-                echo "<td>$livro_favorito</td>";
-                echo "<td class='alinha-esquerda'><button class='outline' name='botao' value='{$livro[0]}'>💔</button></td>";
-                echo "</tr>";
+            foreach($livros as $livro){
+                if(in_array($livro[0] , $livros_favoritos_lista)){
+                    echo "<form action='viewFavoritos.php' method='post'>";
+                    echo "<tr>";
+                    echo "<td>$livro[1]</td>";
+                    echo "<td class='alinha-esquerda'><button class='outline' name='botao' value='{$livro[0]}'>💔</button></td>";
+                    echo "</tr>";
+                    echo "</form>";
+                }
             }
         ?>
         </table>

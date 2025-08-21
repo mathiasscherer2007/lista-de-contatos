@@ -33,6 +33,9 @@ if(isset($_POST['botao'])){
         $sql = "INSERT INTO favoritos (idUser, idLivro) VALUES ({$_SESSION['idUsuario']}, {$_POST['botao']})";
         $conexao->executa($sql);
     }
+
+    header("location: viewLivros.php");
+    exit;
 }
 ?>
 
@@ -63,16 +66,14 @@ if(isset($_POST['botao'])){
             </tr>
             <?php
             foreach($livros as $livro){
-                echo "<form action='viewLivros.php' method='post'>";
-                echo "<tr class='livro-lista'>";
-                echo "<td>{$livro[1]}</td>";
-                if(in_array($livro[0] , $livros_favoritos_lista)){
-                    echo "<td class='alinha-esquerda'><button class='outline' name='botao' value='{$livro[0]}'>💔</button></td>";
-                } else {
+                if(!in_array($livro[0] , $livros_favoritos_lista)){
+                    echo "<form action='viewLivros.php' method='post'>";
+                    echo "<tr>";
+                    echo "<td>$livro[1]</td>";
                     echo "<td class='alinha-esquerda'><button class='outline' name='botao' value='{$livro[0]}'>⭐</button></td>";
+                    echo "</tr>";
+                    echo "</form>";
                 }
-                echo "</tr>";
-                echo "</form>";
             }
             ?>
 </body>
