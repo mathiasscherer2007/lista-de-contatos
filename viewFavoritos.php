@@ -18,6 +18,8 @@ foreach($livros_favoritos as $livro_favorito){
         }
     }
 }
+$sql = "SELECT nome FROM usuarios WHERE idUsuario = ".$_SESSION['idUsuario'];
+$nome = $conexao->consulta($sql)[0][0];
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +28,22 @@ foreach($livros_favoritos as $livro_favorito){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Livros Favoritos</title>
+    <title>The Books on the Table</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="faviicon.png">
 </head>
 <body>
 
 <table>
+    <div class='container'>
+        <head>
+            <?php
+            echo "<h2>Favoritos de ".$nome."</h2>";
+            ?>
+            <a href='viewLivros.php'>Livros</a>
+            <a class='link-disabled' href='viewFavoritos.php'>Favoritos</a>
+        </head>
     <tr>
         <td><strong>Título</strong></td>
     </tr>
@@ -42,5 +55,6 @@ foreach($livros_favoritos as $livro_favorito){
     }
     ?>
 </table>
+</div>
 </body>
 </html>
