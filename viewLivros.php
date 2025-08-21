@@ -31,8 +31,8 @@ $livros = $conexao->consulta($sql);
         echo "</tr>";
     }
     ?>
-
-    <a href="viewFavoritos.php"></a>
 </table>
+<br>
+<a href="viewFavoritos.php">Ver Favoritos</a>
 </body>
 </html>

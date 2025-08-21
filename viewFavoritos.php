@@ -8,8 +8,16 @@ require_once __DIR__."/vendor/autoload.php";
 $conexao = new MySQL();
 $sql = "SELECT * FROM favoritos";
 $livros_favoritos = $conexao->consulta($sql);
-
-
+$sql = "SELECT * FROM livros";
+$livros = $conexao->consulta($sql);
+$livros_favoritos_lista = [];
+$x = 0;
+foreach($livros_favoritos as $livro_favorito){
+    if($livro_favorito[2] == $livros[$x][0]){
+        $livros_favoritos_lista[] = $livros[$x][1];
+    }
+    $x++;
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +35,9 @@ $livros_favoritos = $conexao->consulta($sql);
         <td><strong>Título</strong></td>
     </tr>
     <?php
-    foreach($livros as $livro){
+    foreach($livros_favoritos_lista as $livro_favorito){
         echo "<tr>";
-        echo "<td>{$livro[1]}</td>";
+        echo "<td>{$livro_favorito}</td>";
         echo "</tr>";
     }
     ?>
