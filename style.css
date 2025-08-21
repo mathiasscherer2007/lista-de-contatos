@@ -31,6 +31,8 @@
     text-align: center;
 }
 
-.outline:hover{
-    background-color: red;
+.link-disabled {
+    pointer-events: none;
+    color: grey;
+    text-decoration: none;
 }

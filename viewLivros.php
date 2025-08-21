@@ -30,7 +30,7 @@ $nome = $conexao->consulta($sql)[0][0];
             <?php
             echo "<h2>Seja bem vindo, ".$nome."!</h2>";
             ?>
-            <a href='viewLivros.php'>Livros</a>
+            <a class='link-disabled' href='viewLivros.php'>Livros</a>
             <a href='viewFavoritos.php'>Favoritos</a>
         </head>
         <table>
