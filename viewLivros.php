@@ -26,13 +26,13 @@ $nome = $conexao->consulta($sql)[0][0];
 </head>
 <body>
     <div class='container'>
-        <head>
+        <header>
             <?php
-            echo "<h2>Seja bem vindo, ".$nome."!</h2>";
+            echo "<h2 class='titulo-pagina'>Seja bem vindo, ".$nome."!</h2>";
             ?>
             <a class='link-disabled' href='viewLivros.php'>Livros</a>
             <a href='viewFavoritos.php'>Favoritos</a>
-        </head>
+        </header>
         <table>
             <tr>
                 <td><strong>Título</strong></td>

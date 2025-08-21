@@ -39,7 +39,7 @@ $nome = $conexao->consulta($sql)[0][0];
         <table>
             <header>
                 <?php
-                echo "<h2>Favoritos de ".$nome."</h2>";
+                echo "<h2 class='titulo-pagina'>Favoritos de ".$nome."</h2>";
                 ?>
                 <a href='viewLivros.php'>Livros</a>
                 <a class='link-disabled' href='viewFavoritos.php'>Favoritos</a>
