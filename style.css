@@ -46,8 +46,6 @@ body {
     text-align: center;
 }
 
-.link-toolbar {}
-
 .alinha-esquerda {
     display: flex;
     justify-content: flex-end;
