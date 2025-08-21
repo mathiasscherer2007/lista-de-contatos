@@ -21,17 +21,15 @@ $livros_favoritos_lista = [];
 foreach($livros_favoritos as $livro_favorito){
     foreach($livros as $livro){
         if($livro_favorito[2] == $livro[0]){
-            $livros_favoritos_lista[] = $livro[1];
+            $livros_favoritos_lista[] = $livro[0];
         }
     }
 }
-
 if(isset($_POST['botao'])){
-    if(in_array($livro[1] , $livros_favoritos_lista)){
+    if(in_array($_POST['botao'] , $livros_favoritos_lista)){
         $sql = "DELETE FROM favoritos WHERE favoritos.idUser = {$_SESSION['idUsuario']} AND favoritos.idLivro = {$_POST['botao']}";
         $conexao->executa($sql);
     }else{
-        echo "pingoum";
         $sql = "INSERT INTO favoritos (idUser, idLivro) VALUES ({$_SESSION['idUsuario']}, {$_POST['botao']})";
         $conexao->executa($sql);
     }
@@ -68,7 +66,7 @@ if(isset($_POST['botao'])){
                 echo "<form action='viewLivros.php' method='post'>";
                 echo "<tr class='livro-lista'>";
                 echo "<td>{$livro[1]}</td>";
-                if(in_array($livro[1] , $livros_favoritos_lista)){
+                if(in_array($livro[0] , $livros_favoritos_lista)){
                     echo "<td class='alinha-esquerda'><button class='outline' name='botao' value='{$livro[0]}'>💔</button></td>";
                 } else {
                     echo "<td class='alinha-esquerda'><button class='outline' name='botao' value='{$livro[0]}'>⭐</button></td>";
