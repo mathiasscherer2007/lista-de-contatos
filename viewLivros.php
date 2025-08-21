@@ -1,7 +1,13 @@
 <?php
 session_start();
+include_once __DIR__."/src/mysql.php";
 if(!isset($_SESSION['idUsuario'])){
     header("location:index.php");
+}
+if(isset($_POST['botao'])){
+    $conexao = new MySQL();
+    $sql = "INSERT INTO favoritos (idUser, idLivro) VALUES ({$_SESSION['idUsuario']}, {$_POST['botao']})";
+    $conexao->executa($sql);
 }
 require_once __DIR__."/vendor/autoload.php";
 
@@ -40,10 +46,12 @@ $nome = $conexao->consulta($sql)[0][0];
             </tr>
             <?php
             foreach($livros as $livro){
+                echo "<form action='viewLivros.php' method='post'>";
                 echo "<tr class='livro-lista'>";
                 echo "<td>{$livro[1]}</td>";
-                echo "<td><button class='outline'>⭐</button></td>";
+                echo "<td><button class='outline' name='botao' value='{$livro[0]}'>⭐</button></td>";
                 echo "</tr>";
+                echo "</form>";
             }
             ?>
 </body>
