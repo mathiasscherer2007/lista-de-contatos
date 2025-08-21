@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/08/2025 às 22:05
+-- Tempo de geração: 21/08/2025 às 20:15
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `base_mlm`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `favoritos`
+--
+
+CREATE TABLE `favoritos` (
+  `idFavorito` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idLivro` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `favoritos`
+--
+
+INSERT INTO `favoritos` (`idFavorito`, `idUser`, `idLivro`) VALUES
+(1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -73,8 +92,23 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Despejando dados para a tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `email`, `senha`, `nome`) VALUES
+(1, 'mathias@mathias.com', '$2y$10$PF3mntsecl2ia9Ez/iB7w.dZHsr1teA0QDMxLDDJg9gR1tGaWjTiS', 'Mathias');
+
+--
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `favoritos`
+--
+ALTER TABLE `favoritos`
+  ADD PRIMARY KEY (`idFavorito`),
+  ADD KEY `idUser` (`idUser`),
+  ADD KEY `idLivro` (`idLivro`);
 
 --
 -- Índices de tabela `livros`
@@ -93,6 +127,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de tabela `favoritos`
+--
+ALTER TABLE `favoritos`
+  MODIFY `idFavorito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
@@ -102,7 +142,18 @@ ALTER TABLE `livros`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `favoritos`
+--
+ALTER TABLE `favoritos`
+  ADD CONSTRAINT `favoritos_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `usuarios` (`idUsuario`),
+  ADD CONSTRAINT `favoritos_ibfk_2` FOREIGN KEY (`idLivro`) REFERENCES `livros` (`idLivro`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
