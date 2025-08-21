@@ -18,11 +18,13 @@ if(isset($_POST['botao'])){
     <title>Login de usuário</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="faviicon.png">
 </head>
 <body>
     <div class="container">
         <form action='index.php' method='post' class='form-centrado'>
             <h1 class='titulo-form'><i>The Books on the Table</i></h1>
+            <p class='titulo-form'>Login</p>
             <label>E-mail:
                 <input type='email' name='email' id='email' required>
             </label>
