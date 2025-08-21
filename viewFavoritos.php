@@ -4,7 +4,7 @@ if(!isset($_SESSION['idUsuario'])){
     header("location:index.php");
 }
 require_once __DIR__."/vendor/autoload.php";
-
+    
 $conexao = new MySQL();
 $sql = "SELECT * FROM favoritos WHERE favoritos.idUser = {$_SESSION['idUsuario']}";
 $livros_favoritos = $conexao->consulta($sql);
@@ -52,7 +52,7 @@ $nome = $conexao->consulta($sql)[0][0];
             foreach($livros_favoritos_lista as $livro_favorito){
                 echo "<tr>";
                 echo "<td>$livro_favorito</td>";
-                echo "<td class='alinha-esquerda'><button class='outline'>💔</button></td>";
+                echo "<td class='alinha-esquerda'><button class='outline' name='botao' value='{$livro[0]}'>💔</button></td>";
                 echo "</tr>";
             }
         ?>

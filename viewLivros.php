@@ -1,15 +1,11 @@
 <?php
 session_start();
+require_once __DIR__."/vendor/autoload.php";
 include_once __DIR__."/src/mysql.php";
 if(!isset($_SESSION['idUsuario'])){
     header("location:index.php");
 }
-if(isset($_POST['botao'])){
-    $conexao = new MySQL();
-    $sql = "INSERT INTO favoritos (idUser, idLivro) VALUES ({$_SESSION['idUsuario']}, {$_POST['botao']})";
-    $conexao->executa($sql);
-}
-require_once __DIR__."/vendor/autoload.php";
+
 
 $conexao = new MySQL();
 $sql = "SELECT * FROM livros";
@@ -17,6 +13,29 @@ $livros = $conexao->consulta($sql);
 
 $sql = "SELECT nome FROM usuarios WHERE idUsuario = ".$_SESSION['idUsuario'];
 $nome = $conexao->consulta($sql)[0][0];
+
+$sql = "SELECT * FROM favoritos WHERE favoritos.idUser = {$_SESSION['idUsuario']}";
+$livros_favoritos = $conexao->consulta($sql);
+
+$livros_favoritos_lista = [];
+foreach($livros_favoritos as $livro_favorito){
+    foreach($livros as $livro){
+        if($livro_favorito[2] == $livro[0]){
+            $livros_favoritos_lista[] = $livro[1];
+        }
+    }
+}
+
+if(isset($_POST['botao'])){
+    if(in_array($livro[1] , $livros_favoritos_lista)){
+        $sql = "DELETE FROM favoritos WHERE favoritos.idUser = {$_SESSION['idUsuario']} AND favoritos.idLivro = {$_POST['botao']}";
+        $conexao->executa($sql);
+    }else{
+        echo "pingoum";
+        $sql = "INSERT INTO favoritos (idUser, idLivro) VALUES ({$_SESSION['idUsuario']}, {$_POST['botao']})";
+        $conexao->executa($sql);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +68,11 @@ $nome = $conexao->consulta($sql)[0][0];
                 echo "<form action='viewLivros.php' method='post'>";
                 echo "<tr class='livro-lista'>";
                 echo "<td>{$livro[1]}</td>";
-                echo "<td class='alinha-esquerda'><button class='outline' name='botao' value='{$livro[0]}'>⭐</button></td>";
+                if(in_array($livro[1] , $livros_favoritos_lista)){
+                    echo "<td class='alinha-esquerda'><button class='outline' name='botao' value='{$livro[0]}'>💔</button></td>";
+                } else {
+                    echo "<td class='alinha-esquerda'><button class='outline' name='botao' value='{$livro[0]}'>⭐</button></td>";
+                }
                 echo "</tr>";
                 echo "</form>";
             }
