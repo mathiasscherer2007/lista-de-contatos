@@ -5,7 +5,7 @@ class Usuario implements ActiveRecord{
 
     private int $idUsuario;
     
-    public function __construct(private string $email,private string $senha){
+    public function __construct(private string $email,private string $senha, private string $nome){
     }
 
     public function setIdUsuario(int $idUsuario):void{
