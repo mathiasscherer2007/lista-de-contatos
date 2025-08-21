@@ -6,8 +6,10 @@ if(!isset($_SESSION['idUsuario'])){
 require_once __DIR__."/vendor/autoload.php";
 
 $conexao = new MySQL();
-$sql = "SELECT * FROM livros";
-$livros = $conexao->consulta($sql);
+$sql = "SELECT * FROM favoritos";
+$livros_favoritos = $conexao->consulta($sql);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +18,7 @@ $livros = $conexao->consulta($sql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Livros</title>
+    <title>Página de Livros Favoritos</title>
 </head>
 <body>
 
@@ -31,8 +33,6 @@ $livros = $conexao->consulta($sql);
         echo "</tr>";
     }
     ?>
-
-    <a href="viewFavoritos.php"></a>
 </table>
 </body>
 </html>
