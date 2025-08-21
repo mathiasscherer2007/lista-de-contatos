@@ -42,8 +42,15 @@ body {
 
 .titulo-pagina {
     width: 100%;
-    margin-top: 20px;
+    padding-top: 20px;
     text-align: center;
+}
+
+.link-toolbar {}
+
+.alinha-esquerda {
+    display: flex;
+    justify-content: flex-end;
 }
 
 header {

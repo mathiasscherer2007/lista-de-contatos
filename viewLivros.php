@@ -49,7 +49,7 @@ $nome = $conexao->consulta($sql)[0][0];
                 echo "<form action='viewLivros.php' method='post'>";
                 echo "<tr class='livro-lista'>";
                 echo "<td>{$livro[1]}</td>";
-                echo "<td><button class='outline' name='botao' value='{$livro[0]}'>⭐</button></td>";
+                echo "<td class='alinha-esquerda'><button class='outline' name='botao' value='{$livro[0]}'>⭐</button></td>";
                 echo "</tr>";
                 echo "</form>";
             }

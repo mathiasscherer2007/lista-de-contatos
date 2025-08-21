@@ -46,11 +46,13 @@ $nome = $conexao->consulta($sql)[0][0];
             </header>
         <tr>
             <td><strong>Título</strong></td>
+            <td></td>
         </tr>
         <?php
             foreach($livros_favoritos_lista as $livro_favorito){
                 echo "<tr>";
                 echo "<td>$livro_favorito</td>";
+                echo "<td class='alinha-esquerda'><button class='outline'>💔</button></td>";
                 echo "</tr>";
             }
         ?>
