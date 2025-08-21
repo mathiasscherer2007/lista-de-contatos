@@ -24,6 +24,7 @@ $nome = $conexao->consulta($sql)[0][0];
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,27 +35,26 @@ $nome = $conexao->consulta($sql)[0][0];
     <link rel="icon" href="faviicon.png">
 </head>
 <body>
-
-<table>
     <div class='container'>
-        <head>
-            <?php
-            echo "<h2>Favoritos de ".$nome."</h2>";
-            ?>
-            <a href='viewLivros.php'>Livros</a>
-            <a class='link-disabled' href='viewFavoritos.php'>Favoritos</a>
-        </head>
-    <tr>
-        <td><strong>Título</strong></td>
-    </tr>
-    <?php
-    foreach($livros_favoritos_lista as $livro_favorito){
-        echo "<tr>";
-        echo "<td>$livro_favorito</td>";
-        echo "</tr>";
-    }
-    ?>
-</table>
-</div>
+        <table>
+            <header>
+                <?php
+                echo "<h2>Favoritos de ".$nome."</h2>";
+                ?>
+                <a href='viewLivros.php'>Livros</a>
+                <a class='link-disabled' href='viewFavoritos.php'>Favoritos</a>
+            </header>
+        <tr>
+            <td><strong>Título</strong></td>
+        </tr>
+        <?php
+            foreach($livros_favoritos_lista as $livro_favorito){
+                echo "<tr>";
+                echo "<td>$livro_favorito</td>";
+                echo "</tr>";
+            }
+        ?>
+        </table>
+    </div>
 </body>
 </html>
