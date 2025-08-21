@@ -40,8 +40,19 @@ $sql = "SELECT nome FROM usuarios WHERE idUsuario = {idU}"
             }
             ?>
 
-            <a href="viewFavoritos.php"></a>
-        </table>
-    </div>
+<table>
+    <tr>
+        <td><strong>Título</strong></td>
+    </tr>
+    <?php
+    foreach($livros as $livro){
+        echo "<tr>";
+        echo "<td>{$livro[1]}</td>";
+        echo "</tr>";
+    }
+    ?>
+</table>
+<br>
+<a href="viewFavoritos.php">Ver Favoritos</a>
 </body>
 </html>
