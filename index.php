@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['botao'])){
     require_once __DIR__."/vendor/autoload.php";
-    $u = new Usuario($_POST['email'],$_POST['senha'], $_POST['nome']);
+    $u = new Usuario($_POST['email'],$_POST['senha']);
     if($u->authenticate()){
         header("location: viewLivros.php");
     }else{
@@ -22,10 +22,6 @@ if(isset($_POST['botao'])){
     <div class="container">
         <div class="bloco">
             <form action='index.php' method='post'>
-                <section>
-                    <label for='nome'>Nome:</label>
-                    <input type='text' name='nome' id='nome' required>
-                </section>
                 <section>
                     <label for='email'>E-mail:</label>
                     <input type='email' name='email' id='email' required>

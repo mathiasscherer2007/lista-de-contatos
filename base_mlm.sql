@@ -68,7 +68,8 @@ INSERT INTO `livros` (`idLivro`, `titulo`, `linkImagem`) VALUES
 CREATE TABLE `usuarios` (
   `idUsuario` int(11) NOT NULL,
   `email` text NOT NULL,
-  `senha` text NOT NULL
+  `senha` text NOT NULL,
+  `nome` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
