@@ -6,13 +6,16 @@ if(!isset($_SESSION['idUsuario'])){
 require_once __DIR__."/vendor/autoload.php";
 
 $conexao = new MySQL();
-$sql = "SELECT * FROM favoritos";
+$sql = "SELECT * FROM favoritos WHERE idUser = {$_SESSION['idUsuario']}";
 $livros_favoritos = $conexao->consulta($sql);
 $sql = "SELECT * FROM livros";
 $livros = $conexao->consulta($sql);
+$sql = "SELECT * FROM usuario";
+$usuarios = $conexao->consulta($sql);
 $livros_favoritos_lista = [];
 $x = 0;
 foreach($livros_favoritos as $livro_favorito){
+
     if($livro_favorito[2] == $livros[$x][0]){
         $livros_favoritos_lista[] = $livros[$x][1];
     }
@@ -37,7 +40,7 @@ foreach($livros_favoritos as $livro_favorito){
     <?php
     foreach($livros_favoritos_lista as $livro_favorito){
         echo "<tr>";
-        echo "<td>{$livro_favorito}</td>";
+        echo "<td>$livro_favorito</td>";
         echo "</tr>";
     }
     ?>
