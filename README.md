@@ -1,2 +1,2 @@
-# lista-de-contatos
-Um projeto de lista de contatos feito durante as aulas de programação.
+# The Books on The Table
+Um projeto de visualização de livros e gerenciamento de lista de favoritos feito durante as aulas de programação.
